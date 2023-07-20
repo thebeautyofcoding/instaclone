@@ -31,3 +31,16 @@ export interface Post {
   is_liked_by_user: boolean
   user_id_who_liked: number
 }
+
+export interface Comment {
+  body: string
+  created_at: string
+  updated_at?: string
+  user: User
+  user_id: number
+  post_id: number
+  replies: Comment[]
+  id: number
+  parent: Comment
+  parent_id: number
+}

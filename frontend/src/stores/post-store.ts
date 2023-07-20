@@ -21,7 +21,23 @@ export const usePostStore = defineStore('post', {
       }
       );
     },
+
+    async fetchUsersPosts(userId: number) {
+      const response = await api.get(`/users/${userId}/posts`);
+      this.posts = response.data.posts.map((post: Post) => {
+        return { ...post, showComments: false };
+      });
+    },
     postCreated(post: Post) {
+      if(this.router.currentRoute.value.path.startsWith('/profile') && this.router.currentRoute.value.params.id !== post.user.id.toString()) {
+        return;
+      }
+
+      if (this.router.currentRoute.value.path === '/') {
+        this.posts.unshift(post);
+        return;
+      }
+
       this.posts.unshift(post);
     },
     postLiked(post:Post) {
@@ -36,6 +52,9 @@ export const usePostStore = defineStore('post', {
       if (postIndex !== -1) {
         this.posts[postIndex].comments_count = commentsCount;
       }
-   }
-  }
+    },
+    setPostsToEmptyArray() {
+      this.posts = [];
+    }
+  },
 });

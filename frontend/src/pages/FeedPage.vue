@@ -56,6 +56,7 @@
     echo
       .channel('posts')
       .listen('PostCreated', (data: { post: Post }) => {
+        console.log('post created', data.post);
         usePostStore().postCreated(data.post);
       })
       .listen('PostLiked', (data: { post: Post }) => {
@@ -64,6 +65,7 @@
   });
   onUnmounted(() => {
     // stop listening to the channel
+    usePostStore().setPostsToEmptyArray();
     echo.leaveChannel('posts');
   });
 </script>

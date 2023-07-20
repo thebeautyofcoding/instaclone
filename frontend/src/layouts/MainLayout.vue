@@ -159,7 +159,6 @@
         showUploadModal.value = false;
       });
     showUploadModal.value = false;
-    router.push('/');
   };
 
   const pageLinks = [
