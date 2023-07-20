@@ -64,8 +64,9 @@
         router.push('/');
       })
       .catch((err) => {
+        console.log(err.response);
         $q.notify({
-          message: err.message,
+          message: err.response.data.message,
           type: 'negative',
         });
       });

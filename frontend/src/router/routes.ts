@@ -16,7 +16,7 @@ const routes: RouteRecordRaw[] = [
 
   // GuestLayout login and register
   {
-    path: '/guest',
+    path: '/',
     component: () => import('layouts/GuestLayout.vue'),
     children: [
       { path: '/login', component: () => import('pages/LoginPage.vue') },
