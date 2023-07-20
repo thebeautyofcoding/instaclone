@@ -15,5 +15,5 @@ export interface UserRegisterData{
   name: string
   email: string
   password: string
-  confirmPassword: string
+  password_confirmation: string
 }

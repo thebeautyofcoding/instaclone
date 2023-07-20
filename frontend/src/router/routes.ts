@@ -11,12 +11,16 @@ const routes: RouteRecordRaw[] = [
       {
       path:'/settings',component:()=>import('pages/SettingsPage.vue')
       },
-      {
-        path:'/register', component:()=>import('pages/RegisterPage.vue')
-      },
-      {
-        path:'/login',component:()=>import ('pages/LoginPage.vue')
-      }
+    ],
+  },
+
+  // GuestLayout login and register
+  {
+    path: '/guest',
+    component: () => import('layouts/GuestLayout.vue'),
+    children: [
+      { path: '/login', component: () => import('pages/LoginPage.vue') },
+      { path: '/register', component: () => import('pages/RegisterPage.vue') },
     ],
   },
 
