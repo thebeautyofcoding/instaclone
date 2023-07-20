@@ -17,3 +17,17 @@ export interface UserRegisterData{
   password: string
   password_confirmation: string
 }
+
+export interface Post {
+  id: number
+  body: string
+  image_path: string
+  created_at: string
+  updated_at: string
+  user: User,
+  likes_count: number
+  comments_count: number
+  showComments?: boolean
+  is_liked_by_user: boolean
+  user_id_who_liked: number
+}

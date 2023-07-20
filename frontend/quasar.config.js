@@ -9,7 +9,7 @@
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
 const { configure } = require('quasar/wrappers');
-
+require('dotenv').config()
 module.exports = configure(function (/* ctx */) {
   return {
     eslint: {
@@ -67,7 +67,10 @@ module.exports = configure(function (/* ctx */) {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+      env: {
+        VUE_APP_PUSHER_KEY: process.env.VUE_APP_PUSHER_KEY,
+        VUE_APP_PUSHER_CLUSTER: process.env.VUE_APP_PUSHER_CLUSTER
+      },
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,

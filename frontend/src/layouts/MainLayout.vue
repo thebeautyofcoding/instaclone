@@ -1,4 +1,44 @@
 <template>
+  <q-dialog v-model="showUploadModal">
+    <q-card>
+      <q-card-section>
+        <h6>Upload</h6>
+        <q-file
+          color="grey-3"
+          label-color="blue"
+          v-model="image"
+          label="Select an image"
+          @update:modelValue="handleImagePreview"
+        >
+          <template v-slot:append>
+            <q-icon name="image" color="blue" />
+          </template>
+        </q-file>
+        <q-img spinner-color="blue" :src="imageUrl" style="min-width: 400px" />
+        <q-input
+          v-model="body"
+          label="Description"
+          color="grey-3"
+          label-color="blue"
+        />
+      </q-card-section>
+      <q-card-section>
+        <q-card-actions>
+          <q-btn
+            color="primary"
+            label="Upload"
+            @click="handlePostUpload"
+            :disable="!image"
+          />
+          <q-btn
+            color="negative"
+            label="Cancel"
+            @click="showUploadModal = false"
+          />
+        </q-card-actions>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
   <q-layout>
     <q-header elevated>
       <div class="row">

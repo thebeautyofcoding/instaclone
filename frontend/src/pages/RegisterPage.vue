@@ -64,7 +64,7 @@
     email: '',
     name: '',
     password: '',
-    confirmPassword: '',
+    password_confirmation: '',
   });
   const userStore = useUserStore();
   const form = ref<HTMLFormElement | null>(null);
@@ -81,7 +81,7 @@
       })
       .catch((err) => {
         $q.notify({
-          message: err.message,
+          message: err.response.data.message,
           type: 'negative',
         });
       });
