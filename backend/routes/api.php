@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +32,7 @@ Route::controller(AuthController::class)->group(function () {
 // routes that are protected by sanctum
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('posts', [PostController::class, 'createPost']);
+    Route::get('posts', [PostController::class, 'getPosts']);
+    Route::post('/posts/{post}/like', LikeController::class);
 });
