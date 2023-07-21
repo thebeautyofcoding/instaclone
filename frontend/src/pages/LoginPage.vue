@@ -30,7 +30,7 @@
         />
 
         <div>
-          <router-link to="/register">No account?</router-link>
+          <router-link to="/guest/register">No account?</router-link>
         </div>
 
         <q-btn type="submit" label="Register" color="primary" class="q-mt-md" />

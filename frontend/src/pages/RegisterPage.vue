@@ -44,7 +44,9 @@
           ]"
         />
         <div>
-          <router-link to="/login">Already have an account? Login</router-link>
+          <router-link to="/guest/login"
+            >Already have an account? Login</router-link
+          >
         </div>
 
         <q-btn type="submit" label="Register" color="primary" class="q-mt-md" />

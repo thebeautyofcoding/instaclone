@@ -7,8 +7,6 @@ import {
 } from 'vue-router';
 
 import routes from './routes';
-import { useUserStore } from 'src/stores/user-store';
-import { storeToRefs } from 'pinia';
 
 /*
  * If not building with SSR mode, you can
@@ -33,23 +31,25 @@ export default route(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.VUE_ROUTER_BASE),
   });
-  const {user}=storeToRefs(useUserStore())
+
   Router.beforeEach((to, from, next) => {
-    if (to.path !== '/login'&& to.path!=='/register' && !user.value.name) {
-      // If the user is not logged in (there is no profile in the store)
-      // and tries to visit a page other than '/login',
+    const token = localStorage.getItem('token');
+
+    if (to.path !== '/guest/login' && to.path !== '/guest/register' && !token) {
+      // If the user is not logged in (there is no token in localStorage)
+      // and tries to visit a page other than '/login' or '/register',
       // redirect them to the '/login' page.
-      next('/login')
-    } else if ((to.path === '/login' || to.path === '/register') && user.value.name!=='') {
-      // If the user is logged in (there is a profile in the store)
+      next('/guest/login');
+    } else if ((to.path === '/guest/login' || to.path === '/guest/register') && token) {
+      // If the user is logged in (there is a token in localStorage)
       // and tries to visit the '/login' or '/register' page,
       // redirect them to the home page.
-      next('/')
+      next('/');
     } else {
       // Otherwise, allow the navigation.
-      next()
+      next();
     }
-  })
+  });
 
   return Router;
 });

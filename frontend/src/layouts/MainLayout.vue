@@ -194,7 +194,7 @@
       icon: isLoggedIn.value ? 'logout' : 'login',
       onClick: async () => {
         if (!isLoggedIn.value) {
-          router.push('/login');
+          router.push('/guest/login');
           return;
         }
         await useUserStore()
@@ -205,7 +205,7 @@
               message: 'Logged out successfully',
               icon: 'check',
             });
-            router.push('/login');
+            router.push('/guest/login');
           })
           .catch((_) => {
             $q.notify({
