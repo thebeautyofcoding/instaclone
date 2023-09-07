@@ -30,10 +30,10 @@
         />
 
         <div>
-          <router-link to="/guest/register">No account?</router-link>
+          No account? <router-link to="/guest/register">Register</router-link>
         </div>
 
-        <q-btn type="submit" label="Register" color="primary" class="q-mt-md" />
+        <q-btn type="submit" label="Login" color="primary" class="q-mt-md" />
       </q-form>
     </div>
   </q-page>
